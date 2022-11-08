@@ -45,7 +45,7 @@ namespace BulkyBookWeb.Controllers
             {
                 _db.Categories.Add(obj);
                 _db.SaveChanges();
-                TempData["success"] = "Category Created Successfully";
+                TempData["success"] = "Category Created Successfully!";
                 return RedirectToAction("Index");
             }
             return View(obj);
