@@ -1,0 +1,17 @@
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/bin/Debug/net6.0/BulkyBook.DataAccess.deps.json
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/bin/Debug/net6.0/BulkyBook.DataAccess.runtimeconfig.json
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/bin/Debug/net6.0/BulkyBook.DataAccess.dll
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/bin/Debug/net6.0/BulkyBook.DataAccess.pdb
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/bin/Debug/net6.0/BulkyBook.Models.dll
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/bin/Debug/net6.0/BulkyBook.Models.pdb
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.csproj.AssemblyReference.cache
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.AssemblyInfoInputs.cache
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.AssemblyInfo.cs
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.csproj.CoreCompileInputs.cache
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.csproj.CopyComplete
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.dll
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/refint/BulkyBook.DataAccess.dll
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.pdb
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/BulkyBook.DataAccess.genruntimeconfig.cache
+/Users/verma/Projects/BulkyBook/BulkyBook.DataAccess/obj/Debug/net6.0/ref/BulkyBook.DataAccess.dll
