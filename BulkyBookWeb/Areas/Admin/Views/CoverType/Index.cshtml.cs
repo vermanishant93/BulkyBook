@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BulkyBookWeb.Views
+namespace BulkyBookWeb.Views.CoverType
 {
     public class IndexModel : PageModel
     {
