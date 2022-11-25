@@ -34,6 +34,7 @@
     <Folder Include="Areas\Customer\Views\Home\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\images\Products\" />
+    <Folder Include="wwwroot\images\products\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BulkyBook.Models\BulkyBook.Models.csproj">
@@ -49,5 +50,6 @@
   <ItemGroup>
     <Content Remove="wwwroot\images\" />
     <Content Remove="wwwroot\images\Products\" />
+    <Content Remove="wwwroot\images\products\" />
   </ItemGroup>
 </Project>
