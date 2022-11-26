@@ -19,11 +19,15 @@
     <None Remove="Areas\Customer\" />
     <None Remove="Areas\Admin\View\Category\" />
     <None Remove="Areas\Customer\View\Home\" />
+    <None Remove="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
+    <None Remove="Microsoft.AspNetCore.Identity.UI" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.8" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\" />
@@ -37,9 +41,6 @@
     <Folder Include="wwwroot\images\products\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BulkyBook.Models\BulkyBook.Models.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
     <ProjectReference Include="..\BulkyBook.Utilities\BulkyBook.Utilities.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
