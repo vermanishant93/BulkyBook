@@ -1,36 +1,40 @@
-﻿using System;
-using System.Linq.Expressions;
-using BulkyBook.DataAccess.Repository.IRepository;
+﻿using BulkyBook.DataAccess.Repository.IRepository;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace BulkyBook.DataAccess.Repository
 {
-    //Generic Repository
     public class Repository<T> : IRepository<T> where T : class
     {
-        //It will be the only class which will interac with the db
         private readonly ApplicationDbContext _db;
         internal DbSet<T> dbSet;
 
         public Repository(ApplicationDbContext db)
         {
-            _db = db;
-            _db.Products.Include(u => u.Category).Include(u => u.CoverType);
-            this.dbSet = _db.Set<T>();
+            _db= db;
+            //_db.ShoppingCarts.Include(u => u.Product).Include(u=>u.CoverType);
+            this.dbSet= _db.Set<T>();
         }
-
-        void IRepository<T>.Add(T entity)
+        public void Add(T entity)
         {
             dbSet.Add(entity);
         }
-
-        // Include Property - "Category, CoverType"
-        IEnumerable<T> IRepository<T>.GetAll(string? includeProperties = null)
+        //includeProp - "Category,CoverType"
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter=null, string? includeProperties = null)
         {
             IQueryable<T> query = dbSet;
-            if(includeProperties!= null)
+            if (filter != null)
             {
-                foreach(var includeProp in includeProperties.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                query = query.Where(filter);
+            }
+            if (includeProperties != null)
+            {
+                foreach(var includeProp in includeProperties.Split(new char[] { ','}, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(includeProp);
                 }
@@ -38,30 +42,47 @@ namespace BulkyBook.DataAccess.Repository
             return query.ToList();
         }
 
-
-        T IRepository<T>.GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null, bool tracked = true)
         {
-            IQueryable<T> query = dbSet;
-            query = query.Where(filter);
-            if (includeProperties != null)
+            if (tracked)
             {
-                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                IQueryable<T> query = dbSet;
+
+                query = query.Where(filter);
+                if (includeProperties != null)
                 {
-                    query = query.Include(includeProp);
+                    foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        query = query.Include(includeProp);
+                    }
                 }
+                return query.FirstOrDefault();
             }
-            return query.FirstOrDefault();
+            else
+            {
+                IQueryable<T> query = dbSet.AsNoTracking();
+
+                query = query.Where(filter);
+                if (includeProperties != null)
+                {
+                    foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        query = query.Include(includeProp);
+                    }
+                }
+                return query.FirstOrDefault();
+            }
+            
         }
 
-        void IRepository<T>.Remove(T entity)
+        public void Remove(T entity)
         {
             dbSet.Remove(entity);
         }
 
-        void IRepository<T>.RemoveRange(IEnumerable<T> entity)
+        public void RemoveRange(IEnumerable<T> entity)
         {
             dbSet.RemoveRange(entity);
         }
     }
 }
-

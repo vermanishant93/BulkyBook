@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using BulkyBook.Utility;
 //using Stripe;
 using System;
+using Stripe;
+using BulkyBook.DataAccess.DbInitializer;
 //using BulkyBook.DataAccess.DbInitializer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,14 +27,14 @@ builder.Services.Configure<StripeSettings>(builder.Configuration.GetSection("Str
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
-//builder.Services.AddAuthentication().AddFacebook(options =>
-//{
-//    options.AppId = "533257571075733";
-//    options.AppSecret = "cee28519a0b06e73c034c996885febbb";
-//});
+builder.Services.AddAuthentication().AddFacebook(options =>
+{
+    options.AppId = "533257571075733";
+    options.AppSecret = "cee28519a0b06e73c034c996885febbb";
+});
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = $"/Identity/Account/Login";
@@ -65,8 +67,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-//StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
-//SeedDatabase();
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
+SeedDatabase();
 app.UseAuthentication();
 
 app.UseAuthorization();
@@ -79,11 +81,11 @@ app.MapControllerRoute(
 app.Run();
 
 
-//void SeedDatabase()
-//{
-//    using (var scope = app.Services.CreateScope())
-//    {
-//        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
-//        dbInitializer.Initialize();
-//    }
-//}
+void SeedDatabase()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.Initialize();
+    }
+}
